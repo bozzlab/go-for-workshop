@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 // func main() {
 // 	fmt.Println("idiot")
@@ -15,29 +12,29 @@ var (
 )
 
 //Users is Users
-type Users struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Address  struct {
-		Street  string `json:"street"`
-		Suite   string `json:"suite"`
-		City    string `json:"city"`
-		Zipcode string `json:"zipcode"`
-		Geo     struct {
-			Lat string `json:"lat"`
-			Lng string `json:"lng"`
-		} `json:"geo"`
-	} `json:"address"`
-	Phone   string `json:"phone"`
-	Website string `json:"website"`
-	Company struct {
-		Name        string `json:"name"`
-		CatchPhrase string `json:"catchPhrase"`
-		Bs          string `json:"bs"`
-	} `json:"company"`
-}
+// type Users struct {
+// 	ID       int    `json:"id"`
+// 	Name     string `json:"name"`
+// 	Username string `json:"username"`
+// 	Email    string `json:"email"`
+// 	Address  struct {
+// 		Street  string `json:"street"`
+// 		Suite   string `json:"suite"`
+// 		City    string `json:"city"`
+// 		Zipcode string `json:"zipcode"`
+// 		Geo     struct {
+// 			Lat string `json:"lat"`
+// 			Lng string `json:"lng"`
+// 		} `json:"geo"`
+// 	} `json:"address"`
+// 	Phone   string `json:"phone"`
+// 	Website string `json:"website"`
+// 	Company struct {
+// 		Name        string `json:"name"`
+// 		CatchPhrase string `json:"catchPhrase"`
+// 		Bs          string `json:"bs"`
+// 	} `json:"company"`
+// }
 
 func main() {
 
@@ -121,62 +118,89 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
+	//anonymous function
 	// fmt.Println(func() string {
 	// 	return "Anonymous func"
 	// }())
 
+	//printfib(10)
+	//fibo(10)
+
 }
 
-// Clouser function wtf
-func fact() (func(), func() int) {
-	i := 0
-	return func() {
-			i++
-		}, func() int {
-			return i
-		}
-}
-
-// Score is funcion
-func score(score int) string {
-	if score < 60 {
-		grade = "F"
-	} else if score < 70 {
-		grade = "D"
-	} else if score < 80 {
-		grade = "C"
-	} else if score < 90 {
-		grade = "B"
-	} else {
-		grade = "A"
+func fibonacci() func() int {
+	x, y := -1, 1
+	return func() int {
+		x, y = y, x+y
+		return y
 	}
-	return grade
 }
 
-func init() {
-	fmt.Println("Program Start")
-	fmt.Println("Init must be do, before everything")
-	fmt.Println("------")
-
-}
-
-// NumThai is function
-func NumThai(s string) string {
-	m := map[string]string{
-		"0": "๐",
-		"1": "๑",
-		"2": "๒",
-		"3": "๓",
-		"4": "๔",
-		"5": "๕",
-		"6": "๖",
-		"7": "๗",
-		"8": "๘",
-		"9": "๙",
+func printfib(n int) {
+	f := fibonacci()
+	for i := 0; i < n; i++ {
+		fmt.Println(f())
 	}
-	for k, v := range m {
-		s = strings.Replace(s, k, v, -1)
-		fmt.Println(s)
-	}
-	return s
 }
+
+func fibo(n int) {
+	x, y := 0, 1
+	for i := 0; i < n; i++ {
+		fmt.Println(x)
+		x, y = y, x+y
+	}
+}
+
+// // Clouser function wtf
+// func fact() (func(), func() int) {
+// 	i := 0
+// 	return func() {
+// 			i++
+// 		}, func() int {
+// 			return i
+// 		}
+// }
+
+// // Score is funcion
+// func score(score int) string {
+// 	if score < 60 {
+// 		grade = "F"
+// 	} else if score < 70 {
+// 		grade = "D"
+// 	} else if score < 80 {
+// 		grade = "C"
+// 	} else if score < 90 {
+// 		grade = "B"
+// 	} else {
+// 		grade = "A"
+// 	}
+// 	return grade
+// }
+
+// func init() {
+// 	fmt.Println("Program Start")
+// 	fmt.Println("Init must be do, before everything")
+// 	fmt.Println("------")
+
+// }
+
+// // NumThai is function
+// func NumThai(s string) string {
+// 	m := map[string]string{
+// 		"0": "๐",
+// 		"1": "๑",
+// 		"2": "๒",
+// 		"3": "๓",
+// 		"4": "๔",
+// 		"5": "๕",
+// 		"6": "๖",
+// 		"7": "๗",
+// 		"8": "๘",
+// 		"9": "๙",
+// 	}
+// 	for k, v := range m {
+// 		s = strings.Replace(s, k, v, -1)
+// 		fmt.Println(s)
+// 	}
+// 	return s
+// }

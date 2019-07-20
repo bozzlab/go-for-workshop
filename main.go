@@ -126,44 +126,59 @@ func main() {
 	//printfib(10)
 	//fibo(10)
 
-	i := 10
-	defer func(n int) {
-		fmt.Println(n)
-	}(i)
+	//defer stack
+	// i := 10
+	// defer func(n int) {
+	// 	fmt.Println(n)
+	// }(i)
 
-	// display last value of program
-	defer func() {
-		fmt.Println(i)
-	}()
+	// // display last value of program
+	// defer func() {
+	// 	fmt.Println(i)
+	// }()
 
-	i = 20
+	// i = 20
 
-	fmt.Println("hehe")
+	// fmt.Println("hehe")
 
+	var v interface{}
+	v = 1
+	fmt.Println(v)
+	v = "m"
+	fmt.Println(v)
+
+	varidic()
+	varidic("a1", "a2")
 }
 
-func fibonacci() func() int {
-	x, y := -1, 1
-	return func() int {
-		x, y = y, x+y
-		return y
+func varidic(a ...string) {
+	for _, v := range a {
+		fmt.Println(v)
 	}
 }
 
-func printfib(n int) {
-	f := fibonacci()
-	for i := 0; i < n; i++ {
-		fmt.Println(f())
-	}
-}
+// func fibonacci() func() int {
+// 	x, y := -1, 1
+// 	return func() int {
+// 		x, y = y, x+y
+// 		return y
+// 	}
+// }
 
-func fibo(n int) {
-	x, y := 0, 1
-	for i := 0; i < n; i++ {
-		fmt.Println(x)
-		x, y = y, x+y
-	}
-}
+// func printfib(n int) {
+// 	f := fibonacci()
+// 	for i := 0; i < n; i++ {
+// 		fmt.Println(f())
+// 	}
+// }
+
+// func fibo(n int) {
+// 	x, y := 0, 1
+// 	for i := 0; i < n; i++ {
+// 		fmt.Println(x)
+// 		x, y = y, x+y
+// 	}
+// }
 
 // // Clouser function wtf
 // func fact() (func(), func() int) {

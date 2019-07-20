@@ -1,11 +1,6 @@
 package main
 
-import (
-	"net/http"
-
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
-)
+import "fmt"
 
 // func main() {
 // 	fmt.Println("idiot")
@@ -175,23 +170,49 @@ func main() {
 	// http.HandleFunc("/hello", helloHandler)
 	// log.Fatal(http.ListenAndServe(":8080", nil))
 
-	e := echo.New()
+	// e := echo.New()
 
-	// Middleware
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
+	// // Middleware
+	// e.Use(middleware.Logger())
+	// e.Use(middleware.Recover())
 
-	// Routes
-	e.GET("/", hello)
+	// // Routes
+	// e.GET("/", hello)
 
-	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
+	// // Start server
+	// e.Logger.Fatal(e.Start(":1323"))
+
+	//fibo with go routine
+	chfi := make(chan int)
+	chq := make(chan struct{})
+
+	go fibogo(chfi, chq)
+	for i := 0; i < 10; i++ {
+		fmt.Println(<-chfi)
+	}
+
+	chq <- struct{}{}
+
+}
+
+//fibogo
+func fibogo(fi chan int, q chan struct{}) {
+	a, b := 0, 1
+	for {
+		select {
+		case <-q:
+			return
+		default:
+			fi <- a
+			a, b = b, a+b
+		}
+	}
 }
 
 // Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
-}
+// func hello(c echo.Context) error {
+// 	return c.String(http.StatusOK, "Hello, World!")
+// }
 
 // func printArea(a areaer) {
 // 	fmt.Println(a.area())

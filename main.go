@@ -183,15 +183,24 @@ func main() {
 	// e.Logger.Fatal(e.Start(":1323"))
 
 	//fibo with go routine
-	chfi := make(chan int)
-	chq := make(chan struct{})
+	// chfi := make(chan int)
+	// chq := make(chan struct{})
 
-	go fibogo(chfi, chq)
-	for i := 0; i < 10; i++ {
-		fmt.Println(<-chfi)
-	}
+	// go fibogo(chfi, chq)
+	// for i := 0; i < 10; i++ {
+	// 	fmt.Println(<-chfi)
+	// }
 
-	chq <- struct{}{}
+	// chq <- struct{}{}
+
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println(r)
+		}
+	}()
+
+	a := []int{1, 2}
+	a[3] = 40
 
 }
 

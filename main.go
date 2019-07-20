@@ -54,8 +54,30 @@ func main() {
 	// 	fmt.Println(ok)
 	// }
 
-	NumThai("2019-07-18 23:55:43")
+	//NumThai("2019-07-18 23:55:43")
 	//fmt.Println(NumThai("2019-07-18 23:55:43"))
+
+	// type text string
+	// var t text = "gopher"
+	// fmt.Printf("Type: %T \n", t)
+	//$ main.text
+
+	// type text string
+	// var t string = "gopher"
+	// fmt.Printf("Type: %T \n", t)
+	//$ string
+
+	// type text string
+	// var t text = "gopher"
+	// var s string = "gopher"
+	// fmt.Println(t == s)
+	//$ invalid operation: t == s (mismatched types text and string)
+
+	// type text = string
+	// var t text = "gopher"
+	// var s string = "gopher"
+	// fmt.Println(t == s)
+	//$ true
 
 }
 

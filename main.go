@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // func main() {
 // 	fmt.Println("idiot")
 // }
@@ -141,21 +139,33 @@ func main() {
 
 	// fmt.Println("hehe")
 
-	var v interface{}
-	v = 1
-	fmt.Println(v)
-	v = "m"
-	fmt.Println(v)
+	// 	var v interface{}
+	// 	v = 1
+	// 	fmt.Println(v)
+	// 	v = "m"
+	// 	fmt.Println(v)
 
-	varidic()
-	varidic("a1", "a2")
+	// 	varidic()
+	// 	varidic("a1", "a2")
+
+	//switch
+	// var i interface{} = "hello"
+	// switch v := i.(type) {
+	// case int:
+	// 	fmt.Printf("%T\n", v)
+	// case string:
+	// 	fmt.Printf("%T\n", v)
+	// default:
+	// 	fmt.Printf("Undefined")
+	// }
+
 }
 
-func varidic(a ...string) {
-	for _, v := range a {
-		fmt.Println(v)
-	}
-}
+// func varidic(a ...string) {
+// 	for _, v := range a {
+// 		fmt.Println(v)
+// 	}
+// }
 
 // func fibonacci() func() int {
 // 	x, y := -1, 1

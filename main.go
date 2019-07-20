@@ -1,13 +1,21 @@
 package main
 
+import (
+	"net/http"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+)
+
 // func main() {
 // 	fmt.Println("idiot")
 // }
-var (
-	grade string
-	num   string
-	b     []byte
-)
+
+// var (
+// 	grade string
+// 	num   string
+// 	b     []byte
+// )
 
 //Users is Users
 // type Users struct {
@@ -159,7 +167,61 @@ func main() {
 	// 	fmt.Printf("Undefined")
 	// }
 
+	//http
+	// helloHandler := func(w http.ResponseWriter, req *http.Request) {
+	// 	io.WriteString(w, "Hello, world!\n")
+	// }
+
+	// http.HandleFunc("/hello", helloHandler)
+	// log.Fatal(http.ListenAndServe(":8080", nil))
+
+	e := echo.New()
+
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	// Routes
+	e.GET("/", hello)
+
+	// Start server
+	e.Logger.Fatal(e.Start(":1323"))
 }
+
+// Handler
+func hello(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello, World!")
+}
+
+// func printArea(a areaer) {
+// 	fmt.Println(a.area())
+// }
+
+// func calArea() float64 {
+// 	return 0.01
+// }
+
+// type areaer interface {
+// 	area()
+// }
+
+// type triagle struct {
+// 	high float64
+// 	base float64
+// }
+
+// type rectangle struct {
+// 	x int
+// 	y int
+// }
+
+// func (t triagle) area() float64 {
+// 	return 0.5 * t.high * t.base
+// }
+
+// func (r rectangle) area() int {
+// 	return r.x * r.y
+// }
 
 // func varidic(a ...string) {
 // 	for _, v := range a {

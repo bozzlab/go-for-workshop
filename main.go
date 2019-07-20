@@ -126,6 +126,20 @@ func main() {
 	//printfib(10)
 	//fibo(10)
 
+	i := 10
+	defer func(n int) {
+		fmt.Println(n)
+	}(i)
+
+	// display last value of program
+	defer func() {
+		fmt.Println(i)
+	}()
+
+	i = 20
+
+	fmt.Println("hehe")
+
 }
 
 func fibonacci() func() int {
